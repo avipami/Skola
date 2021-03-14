@@ -16,7 +16,7 @@ namespace cosmosDBsendAll
         private static HttpClient client = new HttpClient();
 
         [FunctionName("sendAlltoCosmosDB")]
-        public static void Run([IoTHubTrigger("messages/events", Connection = "connectionString", ConsumerGroup = "localshit")]EventData message, 
+        public static void Run([IoTHubTrigger("messages/events", Connection = "connectionString", ConsumerGroup = "sendToCosmos")]EventData message, 
             [CosmosDB(
             databaseName: "neopixelcosmosdb",
             collectionName: "Messages",
@@ -35,8 +35,6 @@ namespace cosmosDBsendAll
             msg.Add("Longitude", (message.Properties["lon"]));
             msg.Add("Latitude", (message.Properties["lat"]));
             
-            //msg.Latitude = message.Properties["lat"].ToString();
-            //msg.Longitude = message.Properties["lon"].ToString();
 
             var json = JsonConvert.SerializeObject(msg);
             

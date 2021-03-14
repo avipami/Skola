@@ -21,7 +21,7 @@ namespace cosmosDBsendAll
             collectionName: "Messages",
             ConnectionStringSetting = "CosmosDB",
             
-            SqlQuery = "SELECT * FROM c ORDER BY c.EpochT DESC OFFSET 0 LIMIT 10"
+            SqlQuery = "SELECT *FROM c WHERE c.DeviceId = 'esp32Temp' ORDER BY c._ts DESC OFFSET 0 LIMIT 10"
             )]IEnumerable<dynamic>cosmos,
           ILogger log)
         {
