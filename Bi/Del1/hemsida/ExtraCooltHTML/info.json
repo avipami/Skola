@@ -1,0 +1,27 @@
+[
+    {
+        "temp": 26,
+        "humid": 40,
+        "properties": 
+            {
+                "skt23": 1
+            }
+    },
+     {
+        "temp": 36,
+        "humid": 80,
+        "properties": 
+            {
+                "skt23": 2
+            }
+    },
+    {
+        "temp": 16,
+        "humid": 20,
+        "properties": 
+            {
+                "skt23": 3
+            }
+    }
+    
+]
