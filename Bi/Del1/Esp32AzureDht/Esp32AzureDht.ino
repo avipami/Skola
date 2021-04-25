@@ -8,15 +8,15 @@ void setup()
   initIotHub();
   epochTimeInit();
   dht.begin(); // initierar dht sensor
-  gpsINIT();
+  //gpsINIT();
   delay(2000);
 }
 
 void loop()
 {
   epochTime = time(NULL);
-  float currentTemp = dht.readTemperature();
-  float humidity = dht.readHumidity();
+ 
 
-  makeTheUltimateJsonAndSend (currentTemp, humidity);
+  makeTheUltimateJsonAndSend ();
+  delay(INTERVAL);
 }

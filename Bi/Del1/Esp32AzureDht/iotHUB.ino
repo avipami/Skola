@@ -13,7 +13,7 @@ void initIotHub()
 
 void SendConfirmationCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result)
 {
-  if(result == IOTHUB_CLIENT_CONFIRMATION_OK)
+  if (result == IOTHUB_CLIENT_CONFIRMATION_OK)
   {
     Serial.println("Confirmed");
     messagePending = false;

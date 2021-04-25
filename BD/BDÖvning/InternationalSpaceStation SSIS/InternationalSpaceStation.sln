@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31025.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "InternationalSpaceStation", "InternationalSpaceStation\InternationalSpaceStation.dtproj", "{16F72818-85AF-4847-8121-493B54BE0903}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{16F72818-85AF-4847-8121-493B54BE0903}.Development|Default.ActiveCfg = Development
+		{16F72818-85AF-4847-8121-493B54BE0903}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D60E8315-872D-4442-A429-DD59C4C6948D}
+	EndGlobalSection
+EndGlobal

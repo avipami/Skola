@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31025.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "potatisSQL", "potatisSQL\potatisSQL.csproj", "{65309B23-EC54-4123-965F-A438C6EB4122}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{65309B23-EC54-4123-965F-A438C6EB4122}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65309B23-EC54-4123-965F-A438C6EB4122}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65309B23-EC54-4123-965F-A438C6EB4122}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65309B23-EC54-4123-965F-A438C6EB4122}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {353E8E89-C5CF-41C3-B71F-4CA0DB06BA00}
+	EndGlobalSection
+EndGlobal
