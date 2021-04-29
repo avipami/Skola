@@ -1,8 +1,7 @@
-package com.neopixels.Vecka3.NeoChatTCP.Client;
+package neopixels.Vecka3.NeoChatTCP.Client;
 
-import com.neopixels.Vecka3.NeoChatTCP.Model.LoginObject;
-import com.neopixels.Vecka3.NeoChatTCP.Model.LogoutObject;
-import com.neopixels.Vecka3.NeoChatTCP.Model.MessageObject;
+import neopixels.Vecka3.NeoChatTCP.Model.LoginObject;
+import neopixels.Vecka3.NeoChatTCP.Model.MessageObject;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -25,9 +24,7 @@ public class Client {
             this.connected=true;
             while(connected){
 
-
-
-                Object incomingObject =in.readObject();
+                Object incomingObject = in.readObject();
                 if(incomingObject instanceof LoginObject)
                     System.out.println("Welcome To the Server");
 
@@ -42,9 +39,7 @@ public class Client {
             }
             server.close();
         }
-        catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 

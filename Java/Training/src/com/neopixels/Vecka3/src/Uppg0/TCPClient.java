@@ -18,7 +18,6 @@ public class TCPClient {
             PrintWriter p = new PrintWriter(s.getOutputStream(),true);
             BufferedReader buf = new BufferedReader(new InputStreamReader(s.getInputStream()));
             ){
-            ;
             while (true)
             {
                 p.println("Hejsan svejs");

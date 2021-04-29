@@ -1,4 +1,4 @@
-package com.neopixels.Vecka3.NeoChatTCP.Server;
+package neopixels.Vecka3.NeoChatTCP.Server;
 
 import java.io.IOException;
 import java.net.ServerSocket;

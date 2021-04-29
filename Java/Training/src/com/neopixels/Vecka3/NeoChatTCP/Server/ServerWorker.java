@@ -1,8 +1,9 @@
-package com.neopixels.Vecka3.NeoChatTCP.Server;
+package neopixels.Vecka3.NeoChatTCP.Server;
 
-import com.neopixels.Vecka3.NeoChatTCP.Model.LoginObject;
-import com.neopixels.Vecka3.NeoChatTCP.Model.LogoutObject;
-import com.neopixels.Vecka3.NeoChatTCP.Model.MessageObject;
+
+import neopixels.Vecka3.NeoChatTCP.Model.LoginObject;
+import neopixels.Vecka3.NeoChatTCP.Model.LogoutObject;
+import neopixels.Vecka3.NeoChatTCP.Model.MessageObject;
 
 import java.io.*;
 import java.net.Socket;
@@ -24,12 +25,9 @@ public class ServerWorker extends Thread
 
     @Override
     public void run() {
-        while (!Thread.interrupted())
+        while (clientSocket.isConnected())
         {
             try {
-                if (logout){ Thread.interrupted();return; }
-
-                //out.writeObject(new LoginObject());
                 Object incomingObject = in.readObject();
 
                 if(incomingObject instanceof LoginObject)
@@ -51,14 +49,23 @@ public class ServerWorker extends Thread
 
 
             } catch (IOException | ClassNotFoundException | InterruptedException e) {
-                e.printStackTrace();
+                //e.printStackTrace();
+                try {
+                    clientSocket.close();
+                    System.out.println("Closed connection to : " + clientSocket);
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+                interrupted();
+                break;
             }
         }
         try {
-            this.stop();
+            interrupted();
             this.clientSocket.close();
+            return;
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
     private void handleClientSocket() throws IOException, InterruptedException {
