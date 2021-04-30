@@ -1,4 +1,4 @@
-package neopixels.Vecka3.NeoChatTCP.Model;
+package Model;
 
 public class LogoutObject extends Request{
     public LogoutObject(){}

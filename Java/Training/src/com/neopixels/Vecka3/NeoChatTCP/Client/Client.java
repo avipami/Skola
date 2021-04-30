@@ -1,56 +1,79 @@
-package neopixels.Vecka3.NeoChatTCP.Client;
+package Client;
 
-import neopixels.Vecka3.NeoChatTCP.Model.LoginObject;
-import neopixels.Vecka3.NeoChatTCP.Model.MessageObject;
+import Model.LoginObject;
+import Model.MessageObject;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.net.UnknownHostException;
 
-public class Client {
+
+public class Client extends Thread{
     private Socket server;
+
+    private String userName;
     private boolean connected = false;
-    public Client() {
 
-        try {
-            this.server = new Socket("127.0.0.1", 5555);
-            printMessage();
-            ObjectOutputStream out = new ObjectOutputStream(server.getOutputStream());
-            ObjectInputStream in = new ObjectInputStream(server.getInputStream());
-            out.writeObject(new LoginObject());
-            out.flush();
-            this.connected=true;
-            while(connected){
+    public Client(String userName) throws IOException, InterruptedException {
+        this.userName = userName;
+        while (connected == false)
+        {
+            try {
+                this.server = new Socket("127.0.0.1", 5555);
+                printMessage();
+                ObjectOutputStream out = new ObjectOutputStream(server.getOutputStream());
+                ObjectInputStream in = new ObjectInputStream(server.getInputStream());
+                out.writeObject(new LoginObject(userName));
+                out.flush();
+                TypeConsole tc = new TypeConsole(userName, out);
+                tc.start();
 
-                Object incomingObject = in.readObject();
-                if(incomingObject instanceof LoginObject)
-                    System.out.println("Welcome To the Server");
+                connected = true;
+                while (connected) {
 
-                if(incomingObject instanceof MessageObject)
-                {
-                    System.out.println(((MessageObject) incomingObject).getMessage());
+                    Object incomingObject = in.readObject();
+
+                    if (incomingObject instanceof LoginObject)
+                    {
+                        WelcomeMessage(incomingObject);
+                    }
+
+
+                    if (incomingObject instanceof MessageObject)
+                    {
+                        System.out.println(((MessageObject) incomingObject).getMessage());
+                    }
+
                 }
+                server.close();
+            } catch (ClassNotFoundException | IOException e)
+            {
+                if (server != null) server.close();
+                System.out.println("Server not online for the moment");
+                sleep(2000);
+                connected = false;
 
-                //out.writeObject(new LogoutObject());
-                //out.flush();
-
+                e.printStackTrace();
             }
-            server.close();
-        }
-        catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
 
+        }
     }
 
-    private void printMessage() {
+    private void printMessage()
+    {
         System.out.println("Connected to " + server);
     }
 
-    public static void main(String[] args)
-    {
-        new Client();
+
+    public static void main(String[] args) throws IOException, InterruptedException {
+        new Client("v");
     }
+
+    public void WelcomeMessage(Object incomingLoginMessage)
+    {
+        System.out.println("Welcome To the Server !\n" + ((LoginObject) incomingLoginMessage).getUserName());
+        System.out.println("You can type anytime you want!\n Everyone will be able to listen.\n");
+    }
+
 }

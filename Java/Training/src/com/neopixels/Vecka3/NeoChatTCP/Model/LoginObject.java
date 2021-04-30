@@ -1,6 +1,18 @@
-package neopixels.Vecka3.NeoChatTCP.Model;
+package Model;
 
-public class LoginObject extends Request{
+import Server.ConnectedClientList;
 
-    public LoginObject(){}
+public class LoginObject extends Request {
+    private String userName;
+
+    public LoginObject(String userName) {
+        this.userName = userName;
+        ConnectedClientList.setUserNameList(userName);
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+
 }
